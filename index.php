@@ -39,7 +39,7 @@
       <li class="tab"><a href="#">Επικοινωνία</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li class="tab-right"><a href="#"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
+      <li class="tab-right"><a href="/Eudoxus/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
       <li class="tab-right"><a href="/Eudoxus/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>
     </ul>
      

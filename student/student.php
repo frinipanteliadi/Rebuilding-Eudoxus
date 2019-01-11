@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-	<title>Εύδοξος - Ηλεκτρονική Υπηρεσία Ολοκληρωμένης Διαχείρισης Συγγραμμάτων</title>
+	<title>Εύδοξος - Φοιτητές</title>
 
 	<meta charset="UTF-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@
 
 
 	    <ul class="nav navbar-nav navbar-right">
-	      <li class="tab-right"><a href="#"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
+	      <li class="tab-right"><a href="/Eudoxus/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
 	      <li class="tab-right"><a href="/Eudoxus/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>
 	    </ul>
 	     
@@ -79,7 +79,7 @@
                             	</a>
                         	</div>
                         	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="#" style="background-image:url(/Eudoxus/img/help.jpg)">
+                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/Eudoxus/user/help.php" style="background-image:url(/Eudoxus/img/help.jpg)">
                                 	<div class="c-fi-text">Βοήθεια</div>
                             	</a>
                         	</div>
