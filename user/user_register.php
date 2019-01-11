@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+
     session_start();
     require_once '../login_db.php';
     $conn = new mysqli($hn,$un,$pw,$db);
@@ -8,79 +9,65 @@
     mysqli_set_charset($conn,'utf8');
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $_SESSION['message']='';
+        
+        // Checking if the provided email already exists
         $email = $_POST['Email'];
         $query = "SELECT * FROM Login WHERE email='$email'";
         $result = $conn -> query($query);
         if(!$result) die ($conn->error);
         if($result->num_rows!=0){
-            $_SESSION['message']='Το email υπάρχει';
+            $_SESSION['message']='Το email υπάρχει ήδη';
             header("location: user_register.php");
             die();
         }
+
+        // Checking if the provided S.S.N already exists
         $id = $_POST['ID'];
-        $query = "SELECT * FROM User WHERE ID='$id'";
+        $query = "SELECT * FROM User WHERE id='$id'";
         $result = $conn -> query($query);
         if(!$result) die ($conn->error);
         if($result->num_rows!=0){
-            $_SESSION['message']='Ο αριθμός ασφαλισμένου είναι ήδη εγγεγραμμένο';
+            $_SESSION['message']='Το Α.Φ.Μ. είναι ήδη εγγεγραμμένο';
             header("location: user_register.php");
             die();
         }
+
+        // Checking if the provided passwords are the same
         if($_POST['Pwd']==$_POST['RePwd']){
             $username = $_POST['Username'];
             $surname = $_POST['Surname'];
-            $amka = $_POST['AMKA'];
-            $afm = $_POST['AFM'];
-            $doy = $_POST['DOY'];
-            $street = $_POST['street'];
             $password = $_POST['Pwd'];
             $var = 0;
-            $flag = 0 ;
-            if (isset($_POST['boss'])){
-                $var = 1;
-                $flag = $flag+1;
-                $boss = $_POST['boss'];
-            }
-            if (isset($_POST['pension'])){
-                $var = 2 ;
-                $flag = $flag+1;
-                $pension = $_POST['pension'];
-            }
-            if($flag==2){
-                $var=3;
-            }
-            $query = "INSERT INTO User VALUES"."('$id','$afm','$amka','$doy','$username','$surname','$street')";
-            $result = $conn -> query($query);
-            if(!$result) echo " INSERT failed $query<br>". $conn->error;
-            $query ="INSERT INTO Login VALUES" . "('$email','$password','$var','$id')";
-            $result = $conn -> query($query);
-            if(!$result) echo " INSERT failed $query<br>". $conn->error;
-            if($var == 2 || $var == 3 ){
-                $payment = rand ( 100,1000 );
-                $tempType = rand (1,4);
-                if($tempType==1){
-                    $type = "Γήρατος";
-                }else if($tempType==2){
-                    $type = "Αναπηρίας";
-                }else if($tempType==3){
-                    $type= "Θάνατος Ασφαλισμένου";
-                }else{
-                    $type= "Θάνατος Συνταξιούχου";
+            
+            if (isset($_POST['type'])){
+               
+                // The user is a student
+                if ($_POST['type'] == 4) {
+                    $var = 1;
                 }
-                $query ="INSERT INTO Pension VALUES" . "('$payment','$id','$type')";
-                $result = $conn -> query($query);
-                if(!$result) echo " INSERT failed $query<br>". $conn->error;
+                // The user is a distributor
+                elseif ($_POST['type'] == 1) {
+                    $var = 2;
+                }
             }
-            if($var == 1 || $var == 3){
-                $query ="INSERT INTO Company(ID) VALUES" . "('$id')";
-                $result = $conn -> query($query);
-                if(!$result) echo " INSERT failed $query<br>". $conn->error;
-            }
-            $_SESSION['welcome']="Μόλις δημιουργήθηκε ο λογαριασμός σας";
-            $_SESSION['login'] = 1;
-            $_SESSION['username'] = $username;
-            $_SESSION['id'] = $id;
-            header("location:profile.php");
+            
+            // Inserting the values in the database
+            $query ="INSERT INTO Login VALUES" . "('$email','$password','$id','$var')";
+            $result = $conn -> query($query);
+            if(!$result) echo " INSERT failed $query<br>". $conn->error;
+            // echo "First query: $query";
+
+            $query = "INSERT INTO User VALUES"."('$id','$username','$surname','$var','$email')";
+            $result = $conn -> query($query);
+            if(!$result) echo " INSERT failed $query<br>". $conn->error;
+            // echo "Second query: $query";
+            
+            //$_SESSION['welcome']="Μόλις δημιουργήθηκε ο λογαριασμός σας";
+            // $_SESSION['login'] = 1;
+            // $_SESSION['username'] = $username;
+            // $_SESSION['id'] = $id;
+            // header("location: profile.php");
+            // header("location: ../index.php");
             die();
         }else{
             $_SESSION['message']="Οι κωδικοί δεν ταιριάζουν";
@@ -99,76 +86,107 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Εγγραφή</title>
+    <title>Εύδοξος - Εγγραφή</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/sdi1400161/css/host_register.css" rel="stylesheet"/>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script src="/sdi1400161/js/login.js"></script>
+    <link rel="stylesheet" href="/Eudoxus/css/register.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!-- Including the jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/Eudoxus/css/custom.css"/>
+
+    <script src="/Eudoxus/js/login.js"></script>
 
 </head>
-
 <body >
-    <!-- Navbar -->
+    
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
+      <div class="container-fluid"">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/sdi1400161/">ΙΚΑ</a>
-        </div>
-        <ul class="nav navbar-nav homenav">
-          <li class="active"><a href="#">Εγγραφή</a></li>
+          <a class="navbar-brand" href="/Eudoxus/index.php">
+            <img src="/Eudoxus/img/header.jpg" alt="Eudoxus logo" style="max-height:25px;">
+          </a>
+        </div>   
+        <ul class="nav navbar-nav">
+          <li class="tab"><a href="/Eudoxus/index.php">Αρχική</a></li>
+          <li class="tab"><a href="/Eudoxus/student/student.php">Φοιτητές</a></li>
+          <li class="tab"><a href="#">Γραμματείες Τμημάτων</a></li>
+          <li class="tab"><a href="#">Εκδότες</a></li>
+          <li class="tab"><a href="/Eudoxus/bookshops/bookshops.php">Σημεία Διανομής</a></li>
+          <li class="tab"><a href="#">Σχετικά με τον Εύδοξο</a></li>
+          <li class="tab"><a href="#">Επικοινωνία</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active tab-right"><a href="/Eudoxus/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
+          <li class="tab-right"><a href="/Eudoxus/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>
+        </ul>
+         
+        <form class="navbar-form navbar-right" action="/action_page.php">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Αναζήτηση">
+          </div>
+          <button type="submit" class="btn btn-default">&#128269</button>
+        </form>  
       </div>
     </nav>
+
+    <!-- Registration Form -->
     <div class="container">
-    <h1 class="welcome text-center">Καινούργιος Λογαριασμός</h1>
+        <h1 class="welcome text-center">Καινούργιος Λογαριασμός</h1>
         <div class="card card-container">
             <h2 class='login_title text-center'><b>Εγγραφή</b></h2>
             <form class="form-signin" method="post" action="user_register.php" onsubmit="return checkInp()" name="myForm">
-                <h2><font color="red"><?=$_SESSION['message']?><?$_SESSION['message']='';?></font></h2>
+                <h2>
+                    <font color="red">
+                        <?=$_SESSION['message']?>
+                        <?$_SESSION['message']='';?>
+                    </font>
+                </h2>
                 <span id="reauth-email" class="reauth-email"></span>
                 <p class="input_title">Email(*)</p>
-                <input type="email" id="inputEmail" oninput="remobeBorder(this)" class="login_box" placeholder="user01@email.com" name="Email" required="True" autofocus="True"/>
+                <input type="email" id="inputEmail" oninput="removeBorder(this)" class="login_box" placeholder="user@email.com" name="Email" required="True" autofocus="True"/>
                 <p class="input_title">Όνομα(*)</p>
-                <input type="text" id="inputUserName" oninput="remobeBorder(this)" class="login_box" placeholder="Απόστολος" name="Username" required="True" autofocus="True"/>
+                <input type="text" id="inputUserName" oninput="removeBorder(this)" class="login_box" placeholder="John" name="Username" required="True" autofocus="True"/>
                 <p class="input_title">Επώνυμο(*)</p>
-                <input type="text" id="inputSurname"  oninput="remobeBorder(this)" class="login_box" placeholder="Πλακιάς" name="Surname" required="True" autofocus="True"/>
-                <p class="input_title">Α.Μ.Κ.Α.(*)</p>
-                <input type="text" id="AMKA" oninput="remobeBorder(this)" class="login_box" placeholder="1121332342" name="AMKA" required="True" autofocus="True"/>
-                <p class="input_title">Α.Φ.Μ.</p>
-                <input type="text" id="AFM"  oninput="remobeBorder(this)" class="login_box" placeholder="1211345345" name="AFM" value="" autofocus="True"/>
-                <p class="input_title">ΔΟΥ</p>
-                <input type="text" id="DOY" oninput="remobeBorder(this)" class="login_box" placeholder="Γλυφάδας" name="DOY" value="" autofocus="True"/>
-                <p class="input_title">Αριθμός Μητρώου Ασφάλισης(*)</p>
-                <input type="text" id="ID" class="login_box" oninput="remobeBorder(this)" placeholder="1312313132" name="ID" required="True" autofocus="True"/>
-                <p class="input_title">Οδός Κατοικίας</p>
-                <input type="text" id="street" class="login_box" placeholder="ευδόξου 13" oninput="remobeBorder(this)"  value="" name="street"/>
+                <input type="text" id="inputSurname"  oninput="removeBorder(this)" class="login_box" placeholder="Doe" name="Surname" required="True" autofocus="True"/>
+                <p class="input_title">Α.Φ.Μ.(*)</p>
+                <input type="text" id="AFM"  oninput="removeBorder(this)" class="login_box" placeholder="1211345345" name="ID" value="" autofocus="True"/>
+                <p class="input_title">Τηλέφωνο(*)</p>
+                <input type="text" id="inputPhoneNumber" oninput="removeBorder(this)" class="login_box" placeholder="699999999" name="Phone" required="True" autofocus="True"/>
                 <p class="input_title">Κωδικός(*)</p>
-                <input type="password" id="inputPassword" oninput="remobeBorder(this)" class="login_box" placeholder="******" name="Pwd" required="True"/>
+                <input type="password" id="inputPassword" oninput="removeBorder(this)" class="login_box" placeholder="******" name="Pwd" required="True"/>
                 <p class="input_title">Επαλήθευση Κωδικού(*)</p>
-                <input type="password" id="inputRePassword" oninput="remobeBorder(this)" class="login_box" placeholder="******" name="RePwd" required="True"/>
-                <div class="checkbox" id="safe">
-                    <label ><input type="checkbox"  onclick="checkAddress(this)" name="pension" id="pension" value="2">Συνταξιούχος</label>
+                <input type="password" id="inputRePassword" oninput="removeBorder(this)" class="login_box" placeholder="******" name="RePwd" required="True"/>
+                
+                <p>Ιδιότητα: </p>
+                <div class="radio" id="safe">
+                    <label ><input type="radio" name="type" checked="checked" value="4">Φοιτητής</label>
                 </div>
-                <!-- <div id="safe_info" style="display:none;">
-                    <p class="input_title">ΙΚΑ κωδικός</p>
-                    <input type="text" id="ika_code" class="login_box" placeholder="1313113" name="ika_code"/>
-                    <p class="input_title">Ψευδώνυμο</p>
-                    <input type="text" id="inputUserName" class="login_box" placeholder="User1234" name="Username"/>
-                </div> -->
-                <div class="checkbox" id="booss">
-                    <label ><input type="checkbox"  onclick="checkBoss(this)" name="boss" id="boss" value="1">Εργοδότης</label>
+                <div class="radio" id="safe">
+                    <label ><input type="radio" name="type" disabled="true" value="3">Εκδότης</label>
                 </div>
-                <!-- <div id="boss_info" style="display:none;">
-                    <p class="input_title">Κωδικός Εργοδότη</p>
-                    <input type="text" id="boss_code" class="login_box" placeholder="1313113" name="boss_code"/>
-                </div> -->
+                <div class="radio" id="safe">
+                    <label ><input type="radio" name="type" disabled="true" value="2">Υπάλληλος Γραμματείας</label>
+                </div>
+                <div class="radio" id="safe">
+                    <label ><input type="radio" name="type" id="distributor" value="1">Διανεμητής</label>
+                </div>
+                <div class="radio" id="safe">
+                    <label ><input type="radio" name="type" disabled="true" value="0">Επισκέπτης</label>
+                </div>
                 <br>
-                <button class="btn btn-lg btn-primary" type="submit">Εγγραφή</button>
-				<a href="/sdi1400161/login.php" class="text-right">Έχετε ήδη Λογαριασμό;</a>
-            </form><!-- /form -->
-        </div><!-- /card-container -->
-    </div><!-- /container -->
+                    
+                <!-- Verification Button -->
+                <button class="btn btn-lg btn-primary" type="submit" id="verbutton">Εγγραφή</button>    
+                <a href="/Eudoxus/user/login.php" class="text-right">Έχετε ήδη Λογαριασμό;</a>
+            
+            </form>
+        </div>
+    </div>
 </body>
 </html>
