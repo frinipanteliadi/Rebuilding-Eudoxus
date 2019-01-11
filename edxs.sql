@@ -1,4 +1,4 @@
-﻿-- MySQL Workbench Forward Engineering
+-- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -94,13 +94,12 @@ CREATE TABLE IF NOT EXISTS `eudoxus`.`Book` (
   `author` VARCHAR(45) NOT NULL,
   `publication` VARCHAR(45) NOT NULL,
   `Bookstore_id` INT NOT NULL,
-  `Bookstore_id1` INT NOT NULL,
-  PRIMARY KEY (`id`, `Bookstore_id`),
+  PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC),
-  INDEX `fk_Book_Bookstore1_idx` (`Bookstore_id1` ASC),
+  INDEX `fk_Book_Bookstore1_idx` (`Bookstore_id` ASC),
   CONSTRAINT `fk_Book_Bookstore1`
-    FOREIGN KEY (`Bookstore_id1`)
+    FOREIGN KEY (`Bookstore_id`)
     REFERENCES `eudoxus`.`Bookstore` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -113,9 +112,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `eudoxus`.`Student_has_Book` (
   `Student_id` INT NOT NULL,
   `Book_id` INT NOT NULL,
-  `Book_Bookstore_id` INT NOT NULL,
-  PRIMARY KEY (`Student_id`, `Book_id`, `Book_Bookstore_id`),
-  INDEX `fk_Student_has_Book_Book1_idx` (`Book_id` ASC, `Book_Bookstore_id` ASC),
+  PRIMARY KEY (`Student_id`, `Book_id`),
+  INDEX `fk_Student_has_Book_Book1_idx` (`Book_id` ASC),
   INDEX `fk_Student_has_Book_Student1_idx` (`Student_id` ASC),
   CONSTRAINT `fk_Student_has_Book_Student1`
     FOREIGN KEY (`Student_id`)
@@ -123,8 +121,8 @@ CREATE TABLE IF NOT EXISTS `eudoxus`.`Student_has_Book` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Student_has_Book_Book1`
-    FOREIGN KEY (`Book_id` , `Book_Bookstore_id`)
-    REFERENCES `eudoxus`.`Book` (`id` , `Bookstore_id`)
+    FOREIGN KEY (`Book_id`)
+    REFERENCES `eudoxus`.`Book` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
