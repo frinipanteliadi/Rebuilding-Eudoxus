@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+<?php
+    require_once '../login_db.php';
+    $conn = new mysqli($hn,$un,$pw,$db);
+    if($conn->connect_error) die($conn->connect_error);
+?>
 <html>
 <head>
-	
-	<title>Εύδοξος - Φοιτητές</title>
+	<title>Εύδοξος - Διαθέσιμα Συγγράμματα</title>
 
 	<meta charset="UTF-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +15,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="/sdi1400301/css/custom.css"/>
-
 </head>
 <body>
 
@@ -26,11 +28,11 @@
 	    </div>   
 	    <ul class="nav navbar-nav">
 	      <li class="tab"><a href="/sdi1400301/index.php">Αρχική</a></li>
-	      <li class="tab active"><a href="/sdi1400301/student/student.php">Φοιτητές</a></li>
+	      <li class="tab"><a href="/sdi1400301/student/student.php">Φοιτητές</a></li>
 	      <li class="tab"><a href="#">Γραμματείες Τμημάτων</a></li>
 	      <li class="tab"><a href="#">Εκδότες</a></li>
 	      <li class="tab"><a href="/sdi1400301/bookshops/bookshops.php">Σημεία Διανομής</a></li>
-	      <li class="tab"><a href="/sdi1400301/about/about_us.php">Σχετικά με τον Εύδοξο</a></li>
+	      <li class="tab active"><a href="/sdi1400301/about/about_us.php">Σχετικά με τον Εύδοξο</a></li>
 	      <li class="tab"><a href="/sdi1400301/user/help.php">FAQ</a></li>
 	      <li class="tab"><a href="#">Επικοινωνία</a></li>
 	    </ul>
@@ -61,45 +63,21 @@
 	  </div>
 	</nav>
 
-
-	<!-- Options on the user's page -->
-	<div class="mymenu">
-    	<section class="c-fi">
-        	<div class="c-fi-wrapper">
-            	<div class="c-fi-grid">
-                	<div class="c-fi-cell hero">
-                    	<a class="c-fi-link ga-event" data-event-action="Feature Hero Image Click" href="/sdi1400301/student/terms.php" style="background-image:url(/sdi1400301/img/filling_application.jpg)">
-                        	<div class="c-fi-text">Δήλωση Συγγραμμάτων</div>
-                    	</a>
-                	</div>
-                	<div class="c-fi-cell">
-                    	<div class="c-fi-grid nested">
-                        	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/ika/pension/pension.php/" style="background-image:url(/sdi1400301/img/book_swap.jpg)">
-                                	<div class="c-fi-text">Ανταλλαγή Συγγραμμάτων</div>
-                            	</a>
-                        	</div>
-                        	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/sdi1400301/about/available_books.php" style="background-image:url(/sdi1400301/img/books_cover.jpg)">
-                                	<div class="c-fi-text">Διαθέσιμα Συγγράμματα</div>
-                            	</a>
-                        	</div>
-                        	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/sdi1400301/student/list.php" style="background-image:url(/sdi1400301/img/history.jpg)">
-                                	<div class="c-fi-text">Ιστορικό Δηλώσεων</div>
-                            	</a>
-                        	</div>
-                        	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/sdi1400301/user/help.php" style="background-image:url(/sdi1400301/img/help.jpg)">
-                                	<div class="c-fi-text">Βοήθεια</div>
-                            	</a>
-                        	</div>
-                    	</div>
-                	</div>
-            	</div>
-        	</div>
-    	</section>
-	</div>
+	<h1 style="text-align: center; color: white; font-family: Verdana;">Διαθέσιμα Συγγράμματα</h1>
+    <div class="container" style="background-color: white;">
+        <?php
+            $query = "SELECT * FROM Book";
+            $result = $conn -> query($query);
+            while ($row = $result->fetch_assoc()) {
+                echo "<div class=\"container\">
+                            <h1>".$row['name']."</h1>
+                            <p>Συγγραφέας: ".$row['author']."</p>
+                            <p>Εκδότης: ".$row['publication']."</p>
+                            <p>Εξάμηνο: ".$row['semester']."</p>
+                            </div>";
+            }
+        ?>
+    </div>
 
 </body>
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-
     session_start();
     require_once '../login_db.php';
     $conn = new mysqli($hn,$un,$pw,$db);
@@ -52,22 +51,27 @@
             }
             
             // Inserting the values in the database
-            $query ="INSERT INTO Login VALUES" . "('$email','$password','$id','$var')";
+            $query = "INSERT INTO User VALUES"."('$id','$username','$surname','$var')";
             $result = $conn -> query($query);
             if(!$result) echo " INSERT failed $query<br>". $conn->error;
-            // echo "First query: $query";
+            //echo "First query: $query";
 
-            $query = "INSERT INTO User VALUES"."('$id','$username','$surname','$var','$email')";
+            if ($var == 1) {
+                $var = 1;
+                $query = "INSERT INTO Student VALUES"."('','','$id')";
+                $result = $conn -> query($query);
+                if(!$result) echo " INSERT failed $query<br>". $conn->error;
+            }
+
+            $query ="INSERT INTO Login VALUES" . "('$email','$password','$var','$id')";
             $result = $conn -> query($query);
             if(!$result) echo " INSERT failed $query<br>". $conn->error;
-            // echo "Second query: $query";
-            
-            //$_SESSION['welcome']="Μόλις δημιουργήθηκε ο λογαριασμός σας";
-            // $_SESSION['login'] = 1;
-            // $_SESSION['username'] = $username;
-            // $_SESSION['id'] = $id;
+            //echo "Second query: $query";
+
+            $_SESSION['login'] = 1;
+            $_SESSION['id'] = $id;
             // header("location: profile.php");
-            // header("location: ../index.php");
+            header("location: ../index.php");
             die();
         }else{
             $_SESSION['message']="Οι κωδικοί δεν ταιριάζουν";
@@ -88,7 +92,7 @@
 
     <title>Εύδοξος - Εγγραφή</title>
 
-    <link rel="stylesheet" href="/Eudoxus/css/register.css"/>
+    <link rel="stylesheet" href="/sdi1400301/css/register.css"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
@@ -97,9 +101,9 @@
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="/Eudoxus/css/custom.css"/>
+    <link rel="stylesheet" href="/sdi1400301/css/custom.css"/>
 
-    <script src="/Eudoxus/js/login.js"></script>
+    <script src="/sdi1400301/js/login.js"></script>
 
 </head>
 <body >
@@ -108,27 +112,28 @@
     <nav class="navbar navbar-inverse">
       <div class="container-fluid"">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/Eudoxus/index.php">
-            <img src="/Eudoxus/img/header.jpg" alt="Eudoxus logo" style="max-height:25px;">
+          <a class="navbar-brand" href="/sdi1400301/index.php">
+            <img src="/sdi1400301/img/header.jpg" alt="Eudoxus logo" style="max-height:25px;">
           </a>
         </div>   
         <ul class="nav navbar-nav">
-          <li class="tab"><a href="/Eudoxus/index.php">Αρχική</a></li>
-          <li class="tab"><a href="/Eudoxus/student/student.php">Φοιτητές</a></li>
+          <li class="tab"><a href="/sdi1400301/index.php">Αρχική</a></li>
+          <li class="tab"><a href="/sdi1400301/student/student.php">Φοιτητές</a></li>
           <li class="tab"><a href="#">Γραμματείες Τμημάτων</a></li>
           <li class="tab"><a href="#">Εκδότες</a></li>
-          <li class="tab"><a href="/Eudoxus/bookshops/bookshops.php">Σημεία Διανομής</a></li>
-          <li class="tab"><a href="#">Σχετικά με τον Εύδοξο</a></li>
+          <li class="tab"><a href="/sdi1400301/bookshops/bookshops.php">Σημεία Διανομής</a></li>
+          <li class="tab"><a href="/sdi1400301/about/about_us.php">Σχετικά με τον Εύδοξο</a></li>
+          <li class="tab"><a href="/sdi1400301/user/help.php">FAQ</a></li>
           <li class="tab"><a href="#">Επικοινωνία</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="active tab-right"><a href="/Eudoxus/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
-          <li class="tab-right"><a href="/Eudoxus/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>
+          <li class="active tab-right"><a href="/sdi1400301/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
+          <li class="tab-right"><a href="/sdi1400301/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>
         </ul>
          
-        <form class="navbar-form navbar-right" action="/action_page.php">
+        <form class="navbar-form navbar-right" action="/sdi1400301/user/search.php" method="POST">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Αναζήτηση">
+            <input type="text" class="form-control" name="search" placeholder="Αναζήτηση">
           </div>
           <button type="submit" class="btn btn-default">&#128269</button>
         </form>  
@@ -143,7 +148,7 @@
             <form class="form-signin" method="post" action="user_register.php" onsubmit="return checkInp()" name="myForm">
                 <h2>
                     <font color="red">
-                        <?=$_SESSION['message']?>
+                        <?$_SESSION['message']?>
                         <?$_SESSION['message']='';?>
                     </font>
                 </h2>
@@ -183,7 +188,7 @@
                     
                 <!-- Verification Button -->
                 <button class="btn btn-lg btn-primary" type="submit" id="verbutton">Εγγραφή</button>    
-                <a href="/Eudoxus/user/login.php" class="text-right">Έχετε ήδη Λογαριασμό;</a>
+                <a href="/sdi1400301/user/login.php" class="text-right">Έχετε ήδη Λογαριασμό;</a>
             
             </form>
         </div>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
-	<title>Εύδοξος - Φοιτητές</title>
+	<title>Εύδοξος - Σχετικά με τον Εύδοξο</title>
+</head>
+<body>
 
 	<meta charset="UTF-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +13,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="/sdi1400301/css/custom.css"/>
-
-</head>
-<body>
-
+</body>
+	
 	<!-- Navigation Bar -->
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid"">
@@ -26,11 +25,11 @@
 	    </div>   
 	    <ul class="nav navbar-nav">
 	      <li class="tab"><a href="/sdi1400301/index.php">Αρχική</a></li>
-	      <li class="tab active"><a href="/sdi1400301/student/student.php">Φοιτητές</a></li>
+	      <li class="tab"><a href="/sdi1400301/student/student.php">Φοιτητές</a></li>
 	      <li class="tab"><a href="#">Γραμματείες Τμημάτων</a></li>
 	      <li class="tab"><a href="#">Εκδότες</a></li>
 	      <li class="tab"><a href="/sdi1400301/bookshops/bookshops.php">Σημεία Διανομής</a></li>
-	      <li class="tab"><a href="/sdi1400301/about/about_us.php">Σχετικά με τον Εύδοξο</a></li>
+	      <li class="tab active"><a href="/sdi1400301/about/about_us.php">Σχετικά με τον Εύδοξο</a></li>
 	      <li class="tab"><a href="/sdi1400301/user/help.php">FAQ</a></li>
 	      <li class="tab"><a href="#">Επικοινωνία</a></li>
 	    </ul>
@@ -61,32 +60,30 @@
 	  </div>
 	</nav>
 
-
-	<!-- Options on the user's page -->
 	<div class="mymenu">
     	<section class="c-fi">
         	<div class="c-fi-wrapper">
             	<div class="c-fi-grid">
                 	<div class="c-fi-cell hero">
-                    	<a class="c-fi-link ga-event" data-event-action="Feature Hero Image Click" href="/sdi1400301/student/terms.php" style="background-image:url(/sdi1400301/img/filling_application.jpg)">
-                        	<div class="c-fi-text">Δήλωση Συγγραμμάτων</div>
+                    	<a class="c-fi-link ga-event" data-event-action="Feature Hero Image Click" href="/sdi1400301/about/available_books.php" style="background-image:url(/sdi1400301/img/available_books.jpg)">
+                        	<div class="c-fi-text">Διαθέσιμα Συγγράμματα</div>
                     	</a>
                 	</div>
                 	<div class="c-fi-cell">
                     	<div class="c-fi-grid nested">
                         	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/ika/pension/pension.php/" style="background-image:url(/sdi1400301/img/book_swap.jpg)">
-                                	<div class="c-fi-text">Ανταλλαγή Συγγραμμάτων</div>
+                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="#" style="background-image:url(/sdi1400301/img/about_us.jpg)">
+                                	<div class="c-fi-text">Ποιοι Είμαστε</div>
                             	</a>
                         	</div>
                         	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/sdi1400301/about/available_books.php" style="background-image:url(/sdi1400301/img/books_cover.jpg)">
-                                	<div class="c-fi-text">Διαθέσιμα Συγγράμματα</div>
+                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="#" style="background-image:url(/sdi1400301/img/news.jpg)">
+                                	<div class="c-fi-text">Τελευταία Νέα</div>
                             	</a>
                         	</div>
                         	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/sdi1400301/student/list.php" style="background-image:url(/sdi1400301/img/history.jpg)">
-                                	<div class="c-fi-text">Ιστορικό Δηλώσεων</div>
+                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="#" style="background-image:url(/sdi1400301/img/join.jpg)">
+                                	<div class="c-fi-text">Συνεργαστείτε Μαζί Μας</div>
                             	</a>
                         	</div>
                         	<div class="c-fi-cell">
@@ -101,5 +98,4 @@
     	</section>
 	</div>
 
-</body>
 </html>

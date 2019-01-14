@@ -16,7 +16,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="/Eudoxus/css/custom.css"/>
+  <link rel="stylesheet" href="/sdi1400301/css/custom.css"/>
 </head>
 <body style="background-color: #ececec;">
 
@@ -25,27 +25,41 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid"">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/Eudoxus/index.php">
-        <img src="/Eudoxus/img/header.jpg" alt="Eudoxus logo" style="max-height:25px;">
+      <a class="navbar-brand" href="/sdi1400301/index.php">
+        <img src="/sdi1400301/img/header.jpg" alt="Eudoxus logo" style="max-height:25px;">
       </a>
     </div>   
     <ul class="nav navbar-nav">
-      <li class="active tab"><a href="/Eudoxus/index.php">Αρχική</a></li>
-      <li class="tab"><a href="/Eudoxus/student/student.php">Φοιτητές</a></li>
+      <li class="active tab"><a href="/sdi1400301/index.php">Αρχική</a></li>
+      <li class="tab"><a href="/sdi1400301/student/student.php">Φοιτητές</a></li>
       <li class="tab"><a href="#">Γραμματείες Τμημάτων</a></li>
       <li class="tab"><a href="#">Εκδότες</a></li>
-      <li class="tab"><a href="/Eudoxus/bookshops/bookshops.php">Σημεία Διανομής</a></li>
-      <li class="tab"><a href="#">Σχετικά με τον Εύδοξο</a></li>
+      <li class="tab"><a href="/sdi1400301/bookshops/bookshops.php">Σημεία Διανομής</a></li>
+      <li class="tab"><a href="/sdi1400301/about/about_us.php">Σχετικά με τον Εύδοξο</a></li>
+      <li class="tab"><a href="/sdi1400301/user/help.php">FAQ</a></li>
       <li class="tab"><a href="#">Επικοινωνία</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li class="tab-right"><a href="/Eudoxus/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
-      <li class="tab-right"><a href="/Eudoxus/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>
+      <?php 
+        session_start();
+
+        if (array_key_exists('login', $_SESSION)) {
+          if ($_SESSION['login']==1) {
+            echo '<li class="tab-right"><a href="/sdi1400301/user/profile.php"><span class="glyphicon glyphicon-user"></span> Ο λογαριασμός μου</a></li><li class="tab-right"><a href="/sdi1400301/logout.php"> Αποσύνδεση</a></li>';
+          }else{
+            echo '<li class="tab-right"><a href="/sdi1400301/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
+            <li class="tab-right"><a href="/sdi1400301/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>';
+          }
+        }else{
+          echo '<li class="tab-right"><a href="/sdi1400301/user/user_register.php"><span class="glyphicon glyphicon-user"></span> Εγγραφή</a></li>
+          <li class="tab-right"><a href="/sdi1400301/user/login.php"><span class="glyphicon glyphicon-log-in"></span> Είσοδος</a></li>';
+        }
+      ?>
     </ul>
      
-    <form class="navbar-form navbar-right" action="/action_page.php">
+    <form class="navbar-form navbar-right" action="/sdi1400301/user/search.php" method="POST">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Αναζήτηση">
+        <input type="text" class="form-control" name="search" placeholder="Αναζήτηση">
       </div>
       <button type="submit" class="btn btn-default">&#128269</button>
     </form>  
@@ -67,7 +81,7 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="/Eudoxus/img/books1.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="/sdi1400301/img/books1.jpg" alt="Los Angeles" style="width:100%;">
         <div class="carousel-caption">
           <h3>Δεν υπάρχει πιο πιστός φίλος από ένα βιβλίο</h3>
           <p>Έρνεστ Χέμινγουεϊ</p>
@@ -75,7 +89,7 @@
       </div>
 
       <div class="item">
-        <img src="/Eudoxus/img/books2.jpeg" alt="Chicago" style="width:100%;">
+        <img src="/sdi1400301/img/books2.jpeg" alt="Chicago" style="width:100%;">
         <div class="carousel-caption">
           <h3>Συγγράμματα για Φοιτητές</h3>
           <p>που φοιτούν σε Α.Ε.Ι., Τ.Ε.Ι., Α.Ε.Α. και Ε.Α.Π.</p>
@@ -83,7 +97,7 @@
       </div>
     
       <div class="item">
-        <img src="/Eudoxus/img/books3.jpg" alt="New York" style="width:100%;">
+        <img src="/sdi1400301/img/books3.jpg" alt="New York" style="width:100%;">
         <div class="carousel-caption">
           <h3>Το διάβασμα είναι όπως η τροφή και το νερό. Το πνεύμα που δεν διαβάζει χάνει βάρος, όπως ένα σώμα που δεν τρώει.</h3>
           <p>Βίκτωρ Ουγκώ</p>
