@@ -75,7 +75,7 @@
                 	<div class="c-fi-cell">
                     	<div class="c-fi-grid nested">
                         	<div class="c-fi-cell">
-                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="/ika/pension/pension.php/" style="background-image:url(/sdi1400301/img/book_swap.jpg)">
+                            	<a class="c-fi-link ga-event" data-event-action="Feature Image Click" href="#" style="background-image:url(/sdi1400301/img/book_swap.jpg)">
                                 	<div class="c-fi-text">Ανταλλαγή Συγγραμμάτων</div>
                             	</a>
                         	</div>

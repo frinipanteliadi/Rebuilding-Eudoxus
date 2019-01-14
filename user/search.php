@@ -122,7 +122,7 @@
           while ($row2 = $result2->fetch_assoc()) {
             echo "<div class=\"container\" style=\"background-color: #E0E0E0; width: 1000px;\">
             <h3>".$row2['name']."</h3>
-            <p>Διεύθυνση: ".$row2['author']."</p>
+            <p>Διεύθυνση: ".$row2['street']."</p>
             </div>";
 
             $bookstore_results = $bookstore_results + 1;
@@ -200,10 +200,6 @@
         //   echo "</div>
         //         </div>
         //         </div>";
-            
-
-
-        
         // }
       }
     ?>
