@@ -48,7 +48,7 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
 5. Rename the repository's folder name from Rebuilding-Eudoxus to sdi1400301. 
 
-6. Switch back to the *General* tab, copy the *IP Address* that's displayed, paste it on your browser's address followed by */phpmyadmin* (e.g. http://192.168.64.3/phpmyadmin) and hit Enter.
+6. Switch back to XAMPP's *General* tab, copy the *IP Address* that's displayed, paste it on your browser's address followed by */phpmyadmin* (e.g. http://192.168.64.3/phpmyadmin) and hit Enter.
 
 7. Choose *New* from the bar on the right, in order to create a new database.
 
