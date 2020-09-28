@@ -54,7 +54,7 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
    ![Running (Step 3-Homepage)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%203-Homepage).png)
 
-## What is the new look?
+## What is the new look? 📷
 
 ### Students' Page
 
