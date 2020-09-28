@@ -11,5 +11,9 @@ Eudoxus is an online service provided by Greece's Ministry of Education and Reli
 
 A quick navigation through the application's website reveals a couple of its many flaws. The lack of a search bar, the clutter of text in the center of the homepage, the use of the same image for different functionalities and the lack of simple navigation and links are only some examples of bad web design found in Eudoxus. These factors make the website very hard to use as well as frustrating, despite having to be used by almost all undergraduate students in Greece each semester.
 
+
+
 ![Eudoxus Homepage](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Eudoxus%20Homepage.png)
+
+
 
