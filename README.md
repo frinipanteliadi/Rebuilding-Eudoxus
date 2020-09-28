@@ -58,19 +58,21 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
 ### Students' Page
 
-
+![Students' Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/StudentsPage.png)
 
 ### Bookshops' Page
 
-
+![Bookshops' Pahe](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/BookshopsPage.png)
 
 ### Login
 
-
+![Login Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/LoginPage.png)
 
 ### Search Results
 
-
+![Search Results Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/SearchResults.png)
 
 ### FAQ
+
+![FAQ Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/FAQ.png)
 
