@@ -52,9 +52,11 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
 8. Finally, write the *IP Address* on your browser's address bar followed by */sdi1400301* (e.g. http://192.168.64.3/sdi1400301) and hit Enter. The homepage for the newly designed website should appear.
 
-   ![Running (Step 3-Homepage)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%203-Homepage).png)
-
 ## What is the new look? 📷
+
+### Homepage
+
+![Running (Step 3-Homepage)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%203-Homepage).png)
 
 ### Students' Page
 
