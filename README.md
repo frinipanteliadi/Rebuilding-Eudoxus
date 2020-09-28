@@ -34,15 +34,15 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
 1.  Launch XAMPP and click on *Start*.
 
-   ![Running (Step 1)](/Users/frinipanteliadi/Desktop/Rebuilding-Eudoxus/Images/Running (Step 1).png)
+   ![Running (Step 1)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%201).png)
 
 2. When *Status* turns green, switch to the *Services* tab and click on *Start All*.
 
-   ![Running (Step 2)](/Users/frinipanteliadi/Desktop/Rebuilding-Eudoxus/Images/Running (Step 2).png)
+   ![Running (Step 2)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%202).png)
 
 3. Switch back to the *General* tab, copy the *IP Address* that's displayed, paste it on your browser's address bar followed by */sdi1400301* and hit Enter. The homepage for the newly designed website should appear.
 
-   ![Running (Step 3-Homepage)](/Users/frinipanteliadi/Desktop/Rebuilding-Eudoxus/Images/Running (Step 3-Homepage).png)
+   ![Running (Step 3-Homepage)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%203-Homepage).png)
 
    
 
