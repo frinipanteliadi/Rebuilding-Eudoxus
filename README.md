@@ -42,25 +42,29 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
 3. Go to the *Volumes* tab and first on *Mount* and then on *Explore*.
 
-   
+   ![Running (Step 3)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%203).png)
 
-4. Switch back to the *General* tab, copy the *IP Address* that's displayed, paste it on your browser's address followed by */phpmyadmin* (e.g. http://192.168.64.3/phpmyadmin) and hit Enter.
+4. Go to the folder named *htdocs* and there clone this repository.
 
-5. Choose *New* from the bar on the right, in order to create a new database.
+5. Rename the repository's folder name from Rebuilding-Eudoxus to sdi1400301. 
 
-6. Fill in the name of the database in the, choose *utf8_bin* for the encoding and click on *Create*.
+6. Switch back to the *General* tab, copy the *IP Address* that's displayed, paste it on your browser's address followed by */phpmyadmin* (e.g. http://192.168.64.3/phpmyadmin) and hit Enter.
 
-7. Choose the *Import* tab and click on *Choose File*.
+7. Choose *New* from the bar on the right, in order to create a new database.
 
-8. Upload the *edxs.sql* file, found in this repository.
+8. Fill in the name of the database in the, choose *utf8_bin* for the encoding and click on *Create*.
 
-9. Finally, write the *IP Address* on your browser's address bar followed by */sdi1400301* (e.g. http://192.168.64.3/sdi1400301) and hit Enter. The homepage for the newly designed website should appear.
+9. Choose the *Import* tab and click on *Choose File*.
+
+10. Upload the *edxs.sql* file, found in this repository.
+
+11. Finally, write the *IP Address* on your browser's address bar followed by */sdi1400301* (e.g. http://192.168.64.3/sdi1400301) and hit Enter. The homepage for the newly designed website should appear.
 
 ## What is the new look? 📷
 
 ### Homepage
 
-![Running (Step 3-Homepage)](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%203-Homepage).png)
+![Homepage](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/Running%20(Step%203-Homepage).png)
 
 ### Students' Page
 
