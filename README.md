@@ -78,6 +78,10 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
 ![Login Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/LoginPage.png)
 
+### Registration
+
+![Registration Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/RegistrationPage.png)
+
 ### Search Results
 
 ![Search Results Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/SearchResults.png)
