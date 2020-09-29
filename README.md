@@ -92,7 +92,7 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
   ![Terms & Conditions](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/RequestingBooks(Page%201).png)
 
-- #### Choosing Textbooks
+- #### Choosing Textbooks and Submitting the Form
 
   ![Choosing Textbooks](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/RequestingBooks(Page%202).png)
 
