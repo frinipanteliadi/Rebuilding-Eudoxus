@@ -86,6 +86,20 @@ In order to run the application you must have [XAMPP](https://www.apachefriends.
 
 ![Search Results Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/SearchResults.png)
 
+### Submitting University Textbooks Request Form
+
+- #### Terms & Conditions
+
+  ![Terms & Conditions](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/RequestingBooks(Page%201).png)
+
+- #### Choosing Textbooks
+
+  ![Choosing Textbooks](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/RequestingBooks(Page%202).png)
+
+- #### Overview of Chosen Textbooks
+
+  ![Overview](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/RequestingBooks(Page%203).png)
+
 ### FAQ
 
 ![FAQ Page](https://github.com/frinipanteliadi/Rebuilding-Eudoxus/blob/master/Images/FAQ.png)
